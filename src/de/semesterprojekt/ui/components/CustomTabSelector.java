@@ -146,7 +146,6 @@ public class CustomTabSelector extends JComponent {
 
     /**
      * Debugfunktion um anzuzeigen wo clicks registriert werden
-     * @param g
      */
     private void debugDrawTrigger(Graphics g) {
         line(g, triggerLeft.getStart());

@@ -8,7 +8,7 @@ import java.awt.*;
 /**
  * Leiste mit bis zu 10 Sternen, je nach Bewertung. Bei 0 ist die Leiste unsichtbar.
  */
-public class RatingBar extends JPanel {
+class RatingBar extends JPanel {
     public RatingBar(Game game) {
         super(new FlowLayout());
         if (game.getRating() <= 0) {

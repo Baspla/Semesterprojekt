@@ -1,6 +1,5 @@
 package de.semesterprojekt.ui.dialogs;
 
-import de.semesterprojekt.concept.GameLibrary;
 import de.semesterprojekt.ui.Colors;
 import de.semesterprojekt.ui.LibraryWindow;
 
@@ -18,7 +17,6 @@ import java.io.IOException;
  */
 public class CreateWindow extends JDialog {
 
-    private static GameLibrary library;
     private final JTextField name, plattform, studio, publisher, genre;
     private final JSlider ratingBar;
     private final JCheckBox played;
@@ -135,11 +133,9 @@ public class CreateWindow extends JDialog {
 
     /**
      * Zeigt das Fenster zum Hinzufügen eines Spiels
-     * @param gameLibrary Library zu der hinzugefügt wird
      * @param libraryWindow LibraryWindow welches erneuert wird
      */
-    public static void showWindow(GameLibrary gameLibrary, LibraryWindow libraryWindow) {
-        CreateWindow.library = gameLibrary;
+    public static void showWindow(LibraryWindow libraryWindow) {
         CreateWindow.libraryWindow = libraryWindow;
         if (window == null) window = new CreateWindow();
         if (closeCheck()) {
@@ -171,7 +167,7 @@ public class CreateWindow extends JDialog {
             rating = ratingBar.getValue();
         else
             rating = -1;
-        library.createGame(name.getText(), studio.getText(), publisher.getText(), plattform.getText(), genre.getText(), rating);
+        libraryWindow.getLibrary().createGame(name.getText(), studio.getText(), publisher.getText(), plattform.getText(), genre.getText(), rating);
         clear();
         libraryWindow.reloadGames();
     }

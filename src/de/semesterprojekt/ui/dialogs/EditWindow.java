@@ -11,6 +11,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
+
 /**
  * Dialog zum Bearbeiten eines neuen Spiels
  */
@@ -41,12 +42,24 @@ public class EditWindow extends JDialog {
         JPanel buttonPanel = new JPanel();
         JButton btnSave = new JButton("Speichern");
         JButton btnExit = new JButton("Verlassen");
+        JButton btnRemove = new JButton("Löschen");
         btnSave.addActionListener(e -> {
             save();
             currentGame = null;
             dispose();
         });
         btnExit.addActionListener(e -> {
+            currentGame = null;
+            dispose();
+        });
+        btnRemove.addActionListener(e -> {
+            if (JOptionPane.showConfirmDialog(this, "Willst du das Spiel wirklich löschen?", "Löschen", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) != JOptionPane.OK_OPTION)
+                return;
+            if (libraryWindow.getLibrary().removeGame(currentGame)) {
+                libraryWindow.reloadGames();
+            } else {
+                JOptionPane.showMessageDialog(this, "Spiel konnte aus unbestimmten Gründen nicht gelöscht werden");
+            }
             currentGame = null;
             dispose();
         });
@@ -85,10 +98,13 @@ public class EditWindow extends JDialog {
         buttonPanel.setBackground(Colors.COLOR_NORMAL);
         btnExit.setBackground(Colors.COLOR_DARK);
         btnSave.setBackground(Colors.COLOR_DARK);
+        btnRemove.setBackground(Colors.COLOR_DARK);
         btnExit.setForeground(Colors.COLOR_TEXT);
         btnSave.setForeground(Colors.COLOR_TEXT);
+        btnRemove.setForeground(Colors.COLOR_TEXT);
         btnExit.setToolTipText("Verlassen ohne zu Speichern");
         btnSave.setToolTipText("Speichern und Verlassen");
+        btnRemove.setToolTipText("Entfernt das Spiel");
         genre.setToolTipText("Genre des Spiels");
         publisher.setToolTipText("Publisher des Spiels");
         studio.setToolTipText("Entwicklerstudio des Spiels");
@@ -102,6 +118,7 @@ public class EditWindow extends JDialog {
         add(buttonPanel, BorderLayout.SOUTH);
         buttonPanel.add(btnSave);
         buttonPanel.add(btnExit);
+        buttonPanel.add(btnRemove);
         infoPanel.add(name);
         infoPanel.add(plattform);
         infoPanel.add(studio);
@@ -123,9 +140,11 @@ public class EditWindow extends JDialog {
         border.setTitleColor(Colors.COLOR_TEXT);
         return border;
     }
+
     /**
      * Zeigt das Fenster zum Bearbeiten eines Spiels
-     * @param game Library zu der hinzugefügt wird
+     *
+     * @param game          Library zu der hinzugefügt wird
      * @param libraryWindow LibraryWindow welches erneuert wird
      */
     public static void show(Game game, LibraryWindow libraryWindow) {

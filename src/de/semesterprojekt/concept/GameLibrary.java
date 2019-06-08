@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
  * Hauptklasse des Konzeptlayers
  */
 public class GameLibrary {
+    //TODO Als Einstellung?
     private static int MIN_MATCHES = 2;
     private static int MAX_MATCH_PER_FEATURE = 4;
     private final ArrayList<Game> games;
@@ -39,6 +40,17 @@ public class GameLibrary {
     }
 
     /**
+     * Entfernt ein Spiel aus der Library
+     *
+     * @param game Spiel das entfernt werden soll
+     * @return ob das Spiel entfernt wurde
+     */
+    public boolean removeGame(Game game) {
+        if (game == null) return false;
+        return games.remove(game);
+    }
+
+    /**
      * Gibt die Liste der Spiele zurueck.
      * Dies sind keine kopien.
      *
@@ -52,7 +64,7 @@ public class GameLibrary {
      * Erstellt eine Liste an empfohlenen Spielen nach Haeufigkeit bestimmter features in den Favoriten
      */
     public void generateReccomendedGames() {
-        ArrayList<String>[] preferences = new ArrayList[4];
+        @SuppressWarnings("unchecked") ArrayList<String>[] preferences = new ArrayList[4];
         preferences[0] = new ArrayList<>();
         preferences[1] = new ArrayList<>();
         preferences[2] = new ArrayList<>();
@@ -67,6 +79,7 @@ public class GameLibrary {
         HashMap<String, Long> publisherCounts = count(preferences[1]);
         HashMap<String, Long> plattformCounts = count(preferences[2]);
         HashMap<String, Long> genreCounts = count(preferences[3]);
+        //noinspection unchecked
         reccomendedGames = (ArrayList<Game>) new ArrayList(getGames().stream()
                 .filter(game -> (studioCounts.containsKey(game.getStudio()) ||
                         publisherCounts.containsKey(game.getPublisher()) ||

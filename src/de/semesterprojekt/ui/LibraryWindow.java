@@ -15,9 +15,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 
-@SuppressWarnings("unchecked")
-/**
- * Tiefstes UI-Fenster zur Darstellung einer {@link GameLibrary}
+/** Tiefstes UI-Fenster zur Darstellung einer {@link GameLibrary}
  */
 public class LibraryWindow extends JFrame {
     private static final String WINDOW_TITLE = "Spielebibliothek";
@@ -34,13 +32,15 @@ public class LibraryWindow extends JFrame {
     private static final int PREF_WIDTH = 1000;
     private static final int PREF_HEIGHT = 700;
     private final GameList favoriteList, gameList, reccomendationList;
+
     private final GameLibrary library;
 
     /**
      * Erstellt ein Fenster zu einer gegebenen {@link GameLibrary}
      *
-     * @param library
+     * @param library Library die angezeigt werden soll
      */
+    @SuppressWarnings("unchecked")
     public LibraryWindow(GameLibrary library) {
         super(WINDOW_TITLE);
         this.library = library;
@@ -88,7 +88,7 @@ public class LibraryWindow extends JFrame {
         JPanel bottomPanel = new JPanel(new BorderLayout());
         CustomButton addButton = new CustomButton(false);
         addButton.setToolTipText("Spiel hinzufügen");
-        addButton.addActionListener(e -> CreateWindow.showWindow(library, this));
+        addButton.addActionListener(e -> CreateWindow.showWindow(this));
         CustomButton optionsButton = new CustomButton(true);
         optionsButton.setToolTipText("Einstellungen");
         optionsButton.addActionListener(e -> OptionWindow.showWindow());
@@ -177,6 +177,7 @@ public class LibraryWindow extends JFrame {
     /**
      * Läd die Spiel-Listen neu
      */
+    @SuppressWarnings("unchecked")
     public void reloadGames() {
         if (gameList.getModel() instanceof DefaultListModel) {
             ((DefaultListModel<Game>) gameList.getModel()).removeAllElements();
@@ -191,5 +192,9 @@ public class LibraryWindow extends JFrame {
             ((DefaultListModel<Game>) reccomendationList.getModel()).removeAllElements();
             ((DefaultListModel<Game>) reccomendationList.getModel()).addAll(library.getReccomendedGames());
         }
+    }
+
+    public GameLibrary getLibrary() {
+        return library;
     }
 }
