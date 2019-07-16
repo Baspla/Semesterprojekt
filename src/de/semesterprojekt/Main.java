@@ -7,7 +7,6 @@ import de.semesterprojekt.ui.LibraryWindow;
 class Main {
 
     public static void main(String[] args) {
-    	System.out.println("Stefan hat jetzt auch Git in Eclipse :D");
         GameLibrary library = new GameLibrary();
         FileStorage storage = new FileStorage();
         library.loadGames(storage);
