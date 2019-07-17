@@ -9,17 +9,13 @@ import de.semesterprojekt.ui.HorizontalArea;
 import de.semesterprojekt.ui.LibraryWindow;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Font;
-import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Paint;
-import java.awt.RadialGradientPaint;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -155,19 +151,21 @@ public class CustomTabSelector extends JComponent {
         //debugDrawTrigger(g);
     }
 
-    private void halo(HorizontalArea trigger, Graphics2D g2d, float r) {
-        float[] fractions = {0, 1f};
-        Color[] colors = {Colors.COLOR_HALO, Colors.COLOR_DARK};
-        //LEFT
-        g2d.setPaint(new RadialGradientPaint(trigger.getStart() + r, 0, 10, fractions, colors));
-        g2d.fillRect((int) (trigger.getStart()), 0, (int) (trigger.getStart() + r), 1000);
-        //RIGHT
-        g2d.setPaint(new RadialGradientPaint(trigger.getEnd() - r, 0, 10, fractions, colors));
-        g2d.fillRect((int) (trigger.getEnd() - r), 0, (int) (trigger.getEnd() - trigger.getStart()), 1000);
-        //MIDDLE
-        g2d.setPaint(new GradientPaint(0, 0, Colors.COLOR_HALO, 0, 10, Colors.COLOR_DARK));
-        g2d.fillRect((int) (trigger.getStart() + r), 0, (int) (trigger.getEnd() - trigger.getStart() - r - r), 1000);
-    }
+// --Commented out by Inspection START (17.07.2019 20:27):
+//    private void halo(HorizontalArea trigger, Graphics2D g2d, float r) {
+//        float[] fractions = {0, 1f};
+//        Color[] colors = {Colors.COLOR_HALO, Colors.COLOR_DARK};
+//        //LEFT
+//        g2d.setPaint(new RadialGradientPaint(trigger.getStart() + r, 0, 10, fractions, colors));
+//        g2d.fillRect((int) (trigger.getStart()), 0, (int) (trigger.getStart() + r), 1000);
+//        //RIGHT
+//        g2d.setPaint(new RadialGradientPaint(trigger.getEnd() - r, 0, 10, fractions, colors));
+//        g2d.fillRect((int) (trigger.getEnd() - r), 0, (int) (trigger.getEnd() - trigger.getStart()), 1000);
+//        //MIDDLE
+//        g2d.setPaint(new GradientPaint(0, 0, Colors.COLOR_HALO, 0, 10, Colors.COLOR_DARK));
+//        g2d.fillRect((int) (trigger.getStart() + r), 0, (int) (trigger.getEnd() - trigger.getStart() - r - r), 1000);
+//    }
+// --Commented out by Inspection STOP (17.07.2019 20:27)
 
 // --Commented out by Inspection START (17.07.2019 08:24):
 //    /**

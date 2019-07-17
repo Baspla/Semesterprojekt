@@ -17,8 +17,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -147,6 +145,7 @@ public class EditWindow extends JDialog {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        setLocationRelativeTo(null);
     }
 
     /**

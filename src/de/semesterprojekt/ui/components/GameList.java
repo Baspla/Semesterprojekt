@@ -17,7 +17,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 @SuppressWarnings("unchecked")
-/** Liste an Spielen für alle Tabs
+/* Liste an Spielen für alle Tabs
  */
 public class GameList extends JList {
     public GameList(LibraryWindow libraryWindow) {

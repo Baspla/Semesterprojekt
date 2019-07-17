@@ -137,6 +137,7 @@ public class CreateWindow extends JDialog {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        setLocationRelativeTo(null);
     }
 
     private Border whiteTextBorder(String string) {

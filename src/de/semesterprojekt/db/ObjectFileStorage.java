@@ -11,7 +11,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 public class ObjectFileStorage implements FileStorage {
@@ -35,6 +34,7 @@ public class ObjectFileStorage implements FileStorage {
         return saveLocation;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public Collection<Game> loadGames() {
         if (saveLocation == null) {

@@ -5,8 +5,6 @@
 package de.semesterprojekt.ui;
 
 import javax.swing.BorderFactory;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import java.awt.Color;

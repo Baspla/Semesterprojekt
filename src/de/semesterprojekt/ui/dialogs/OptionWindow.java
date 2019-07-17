@@ -95,6 +95,7 @@ public class OptionWindow extends JDialog {
         add(bot, BorderLayout.SOUTH);
         pack();
         updateSaveLocation();
+        setLocationRelativeTo(null);
         setResizable(false);
         setVisible(true);
     }

@@ -33,42 +33,82 @@ public class Game implements Serializable {
         this.rating = Math.max(-1, Math.min(10, rating));
     }
 
+    /**
+     *
+     * @return Bewertung des Spiels
+     */
     public int getRating() {
         return rating;
     }
 
+    /**
+     *
+     * @param rating Bewertung des Spiels
+     */
     public void setRating(int rating) {
         this.rating = rating;
     }
 
+    /**
+     *
+     * @return Name des Spiels
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name Name des Spiels
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return Plattform des Spiels
+     */
     public String getPlattform() {
         return plattform;
     }
 
+    /**
+     *
+     * @param plattform Plattform des Spiels
+     */
     public void setPlattform(String plattform) {
         this.plattform = plattform;
     }
 
+    /**
+     *
+     * @return Publisher des Spiels
+     */
     public String getPublisher() {
         return publisher;
     }
 
+    /**
+     *
+     * @param publisher Publisher des Spiels
+     */
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
 
+    /**
+     *
+     * @return Studio des Spiels
+     */
     public String getStudio() {
         return studio;
     }
 
+    /**
+     *
+     * @param studio Studio des Spiels
+     */
     public void setStudio(String studio) {
         this.studio = studio;
     }

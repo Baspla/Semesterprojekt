@@ -13,33 +13,23 @@ import de.semesterprojekt.ui.dialogs.CreateWindow;
 import de.semesterprojekt.ui.dialogs.OptionWindow;
 
 import javax.imageio.ImageIO;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.KeyStroke;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.GridLayout;
-import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.Point;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -98,16 +88,13 @@ public class LibraryWindow extends JFrame {
         JPanel reccomendationPanel = new JPanel(new BorderLayout());
 
         //Strg+s code
-        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
-            @Override
-            public boolean dispatchKeyEvent(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_S && e.getModifiersEx() == InputEvent.CTRL_DOWN_MASK&&e.paramString().startsWith("KEY_PRESSED")) {
-                    library.saveGames();
-                    reloadGames();
-                    return true;
-                }
-                return false;
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(e -> {
+            if (e.getKeyCode() == KeyEvent.VK_S && e.getModifiersEx() == InputEvent.CTRL_DOWN_MASK&&e.paramString().startsWith("KEY_PRESSED")) {
+                library.saveGames();
+                reloadGames();
+                return true;
             }
+            return false;
         });
 
         favoritePanel.setBackground(Colors.COLOR_NORMAL);
