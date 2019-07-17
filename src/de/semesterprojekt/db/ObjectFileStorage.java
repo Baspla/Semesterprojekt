@@ -18,7 +18,7 @@ public class ObjectFileStorage implements FileStorage {
 
     public ObjectFileStorage(){
         Preferences prefs = Preferences.userNodeForPackage(ObjectFileStorage.class);
-        String location = prefs.get("fileSaveLocation", new JFileChooser().getFileSystemView().getDefaultDirectory().toString());
+        String location = prefs.get("fileSaveLocation", new JFileChooser().getFileSystemView().getDefaultDirectory().toString()+File.pathSeparator+"mylibrary.gamelib");
         saveLocation = new File(location);
     }
 
