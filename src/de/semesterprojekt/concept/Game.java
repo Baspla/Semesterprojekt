@@ -4,12 +4,13 @@
 
 package de.semesterprojekt.concept;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * Ein Game representiert ein Spiel auf einer Plattform
  */
-public class Game {
+public class Game implements Serializable {
     private int rating;
     private String name, plattform, publisher, studio, genre;
 

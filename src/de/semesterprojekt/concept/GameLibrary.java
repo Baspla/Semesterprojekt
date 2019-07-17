@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
  */
 public class GameLibrary {
     //TODO Als Einstellung?
+    //Einstellungen für die Favoriten
     private static final int MIN_MATCHES = 2;
     private static final int MAX_MATCH_PER_FEATURE = 4;
     private final ArrayList<Game> games;
@@ -135,7 +136,9 @@ public class GameLibrary {
      * Laedt Spiele aus einem {@link DataStorage} und fuegt es zur vorhandenen Liste hinzu.
      */
     public void loadGames() {
+        System.out.println("Loading Games...");
         Collection<Game> loaded = dataStorage.loadGames();
+        games.clear();//TODO Import oder laden?
         if (loaded != null) {
             loaded.forEach(game -> {
                 if (!games.contains(game)) games.add(game);
@@ -147,7 +150,9 @@ public class GameLibrary {
      * Speichert Spiele in einem {@link DataStorage}.
      */
     public void saveGames() {
-        dataStorage.saveGames(games);
+        System.out.println("Saving Games...");
+        setUnsaved(!dataStorage.saveGames(games));
+        System.out.println(!isUnsaved());
     }
 
     public void setDataStorage(DataStorage storage) {

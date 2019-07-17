@@ -13,13 +13,17 @@ import de.semesterprojekt.ui.dialogs.CreateWindow;
 import de.semesterprojekt.ui.dialogs.OptionWindow;
 
 import javax.imageio.ImageIO;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.KeyStroke;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -28,8 +32,15 @@ import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.GridLayout;
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -68,15 +79,17 @@ public class LibraryWindow extends JFrame {
         setLayout(new BorderLayout());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         //TODO LookAndFeel
-        if(System.getProperty("os.name").toLowerCase().contains("mac")){
-            Colors.COLOR_TEXT_BUTTON=Colors.COLOR_DARK;
+        if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+            Colors.COLOR_TEXT_BUTTON = Colors.COLOR_DARK;
         }
         /*try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }*/
+
         setBackground(Colors.COLOR_NORMAL);
+
         setForeground(Colors.COLOR_TEXT);
 
         JPanel listPanel = new JPanel(new CardLayout());
@@ -84,14 +97,33 @@ public class LibraryWindow extends JFrame {
         JPanel gamePanel = new JPanel(new BorderLayout());
         JPanel reccomendationPanel = new JPanel(new BorderLayout());
 
+        //Strg+s code
+        KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(new KeyEventDispatcher() {
+            @Override
+            public boolean dispatchKeyEvent(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_S && e.getModifiersEx() == InputEvent.CTRL_DOWN_MASK&&e.paramString().startsWith("KEY_PRESSED")) {
+                    library.saveGames();
+                    reloadGames();
+                    return true;
+                }
+                return false;
+            }
+        });
+
         favoritePanel.setBackground(Colors.COLOR_NORMAL);
-        favoriteList = new GameList(this);
+        favoriteList = new
+
+                GameList(this);
+
         JScrollPane favoriteScroll = new JScrollPane(favoriteList);
         favoriteScroll.setBorder(BorderFactory.createEmptyBorder());
         favoritePanel.add(favoriteScroll, BorderLayout.CENTER);
 
         gamePanel.setBackground(Colors.COLOR_NORMAL);
-        gameList = new GameList(this);
+        gameList = new
+
+                GameList(this);
+
         JScrollPane gameScroll = new JScrollPane(gameList);
         gameScroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         gameScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -99,7 +131,10 @@ public class LibraryWindow extends JFrame {
         gamePanel.add(gameScroll, BorderLayout.CENTER);
 
         reccomendationPanel.setBackground(Colors.COLOR_NORMAL);
-        reccomendationList = new GameList(this);
+        reccomendationList = new
+
+                GameList(this);
+
         JScrollPane reccomendationScroll = new JScrollPane(reccomendationList);
         reccomendationScroll.setBorder(BorderFactory.createEmptyBorder());
         reccomendationPanel.add(reccomendationScroll, BorderLayout.CENTER);
@@ -107,6 +142,7 @@ public class LibraryWindow extends JFrame {
         listPanel.add(favoritePanel, PANEL_FAVORITE);
         listPanel.add(gamePanel, PANEL_GAME);
         listPanel.add(reccomendationPanel, PANEL_RECCOMENDATION);
+
         add(listPanel, BorderLayout.CENTER);
 
         JPanel bottomPanel = new JPanel(new BorderLayout());
@@ -115,18 +151,27 @@ public class LibraryWindow extends JFrame {
         addButton.addActionListener(e -> CreateWindow.showWindow(this));
         CustomButton optionsButton = new CustomButton(true);
         optionsButton.setToolTipText("Einstellungen");
-        optionsButton.addActionListener(e -> OptionWindow.showWindow(library));
+        optionsButton.addActionListener(e -> OptionWindow.showWindow(this));
         CustomTabSelector tabSelector = new CustomTabSelector(listPanel);
         //noinspection SuspiciousNameCombination
-        addButton.setPreferredSize(new Dimension(BAR_HEIGHT, BAR_HEIGHT));
+        addButton.setPreferredSize(new
+
+                Dimension(BAR_HEIGHT, BAR_HEIGHT));
         //noinspection SuspiciousNameCombination
-        optionsButton.setPreferredSize(new Dimension(BAR_HEIGHT, BAR_HEIGHT));
-        tabSelector.setPreferredSize(new Dimension(0, BAR_HEIGHT));
-        bottomPanel.setPreferredSize(new Dimension(0, BAR_HEIGHT));
+        optionsButton.setPreferredSize(new
+
+                Dimension(BAR_HEIGHT, BAR_HEIGHT));
+        tabSelector.setPreferredSize(new
+
+                Dimension(0, BAR_HEIGHT));
+        bottomPanel.setPreferredSize(new
+
+                Dimension(0, BAR_HEIGHT));
         bottomPanel.setBackground(Colors.COLOR_DARK);
         bottomPanel.add(addButton, BorderLayout.WEST);
         bottomPanel.add(optionsButton, BorderLayout.EAST);
         bottomPanel.add(tabSelector, BorderLayout.CENTER);
+
         add(bottomPanel, BorderLayout.SOUTH);
 
         //Disabled features
@@ -188,15 +233,25 @@ public class LibraryWindow extends JFrame {
             URL bild = getClass().getResource("/icon.png");
             if (bild != null)
                 setIconImage(ImageIO.read(bild));
-        } catch (IOException e) {
+        } catch (
+                IOException e) {
             e.printStackTrace();
         }
+
         setMinimumSize(new Dimension(MIN_WIDTH, MIN_HEIGHT));
+
         setMaximumSize(new Dimension(MAX_WIDTH, MAX_HEIGHT));
+
         setPreferredSize(new Dimension(PREF_WIDTH, PREF_HEIGHT));
+
         setSize(new Dimension(PREF_WIDTH, PREF_HEIGHT));
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(screenSize.width / 2 - this.getSize().width / 2, screenSize.height / 2 - this.getSize().height / 2);
+        this.
+
+                setLocation(screenSize.width / 2 - this.getSize().width / 2, screenSize.height / 2 - this.
+
+                        getSize().height / 2);
+
         setVisible(true);
     }
 
@@ -219,7 +274,7 @@ public class LibraryWindow extends JFrame {
             ((DefaultListModel<Game>) reccomendationList.getModel()).addAll(library.getReccomendedGames());
         }
         if (library.isUnsaved())
-            setTitle(WINDOW_TITLE + " [ungespeichert]");
+            setTitle(WINDOW_TITLE + " - ungespeichert [strg+S]");
         else {
             setTitle(WINDOW_TITLE);
         }

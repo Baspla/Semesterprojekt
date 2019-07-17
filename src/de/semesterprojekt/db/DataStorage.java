@@ -17,6 +17,6 @@ public interface DataStorage {
      */
     Collection<Game> loadGames();
 
-    void saveGames(Collection<Game> games);
+    boolean saveGames(Collection<Game> games);
 
 }
