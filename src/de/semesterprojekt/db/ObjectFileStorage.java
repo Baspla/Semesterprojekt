@@ -2,6 +2,7 @@ package de.semesterprojekt.db;
 
 import de.semesterprojekt.concept.Game;
 
+import javax.swing.JFileChooser;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -17,7 +18,7 @@ public class ObjectFileStorage implements FileStorage {
 
     public ObjectFileStorage(){
         Preferences prefs = Preferences.userNodeForPackage(ObjectFileStorage.class);
-        String location = prefs.get("fileSaveLocation", "C:\\Program Files\\Spielebibliothek\\save.data");
+        String location = prefs.get("fileSaveLocation", new JFileChooser().getFileSystemView().getDefaultDirectory().toString());
         saveLocation = new File(location);
     }
 
