@@ -181,6 +181,7 @@ public class EditWindow extends JDialog {
             currentGame.setRating(ratingBar.getValue());
         else
             currentGame.setRating(-1);
+        libraryWindow.getLibrary().setUnsaved(true);
         libraryWindow.reloadGames();
     }
 

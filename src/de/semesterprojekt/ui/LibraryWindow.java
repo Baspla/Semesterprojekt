@@ -15,7 +15,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 
-/** Tiefstes UI-Fenster zur Darstellung einer {@link GameLibrary}
+/**
+ * Tiefstes UI-Fenster zur Darstellung einer {@link GameLibrary}
  */
 public class LibraryWindow extends JFrame {
     private static final String WINDOW_TITLE = "Spielebibliothek";
@@ -91,7 +92,7 @@ public class LibraryWindow extends JFrame {
         addButton.addActionListener(e -> CreateWindow.showWindow(this));
         CustomButton optionsButton = new CustomButton(true);
         optionsButton.setToolTipText("Einstellungen");
-        optionsButton.addActionListener(e -> OptionWindow.showWindow());
+        optionsButton.addActionListener(e -> OptionWindow.showWindow(library));
         CustomTabSelector tabSelector = new CustomTabSelector(listPanel);
         //noinspection SuspiciousNameCombination
         addButton.setPreferredSize(new Dimension(BAR_HEIGHT, BAR_HEIGHT));
@@ -191,6 +192,11 @@ public class LibraryWindow extends JFrame {
         if (reccomendationList.getModel() instanceof DefaultListModel) {
             ((DefaultListModel<Game>) reccomendationList.getModel()).removeAllElements();
             ((DefaultListModel<Game>) reccomendationList.getModel()).addAll(library.getReccomendedGames());
+        }
+        if (library.isUnsaved())
+            setTitle(WINDOW_TITLE + " [ungespeichert]");
+        else {
+            setTitle(WINDOW_TITLE);
         }
     }
 

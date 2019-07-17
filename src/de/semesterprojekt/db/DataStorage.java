@@ -2,6 +2,7 @@ package de.semesterprojekt.db;
 
 import de.semesterprojekt.concept.Game;
 
+import java.io.File;
 import java.util.Collection;
 
 /**
@@ -13,8 +14,6 @@ public interface DataStorage {
      */
     Collection<Game> loadGames();
 
-    /**
-     * @return Eistellungen des Nutzers
-     */
-    Options loadOptions() ;
+    void saveGames(Collection<Game> games);
+
 }

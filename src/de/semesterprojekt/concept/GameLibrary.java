@@ -2,6 +2,7 @@ package de.semesterprojekt.concept;
 
 import de.semesterprojekt.db.DataStorage;
 
+import javax.xml.crypto.Data;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -15,6 +16,8 @@ public class GameLibrary {
     private static int MAX_MATCH_PER_FEATURE = 4;
     private final ArrayList<Game> games;
     private ArrayList<Game> reccomendedGames;
+    private DataStorage dataStorage;
+    private boolean unsaved;
 
     /**
      * Erstellt eine neue leere GameLibrary
@@ -36,6 +39,7 @@ public class GameLibrary {
      */
     public void createGame(String name, String studio, String publisher, String plattform, String genre, int rating) {
         Game game = new Game(name, studio, publisher, plattform, genre, rating);
+        setUnsaved(true);
         games.add(game);
     }
 
@@ -47,6 +51,7 @@ public class GameLibrary {
      */
     public boolean removeGame(Game game) {
         if (game == null) return false;
+        setUnsaved(true);
         return games.remove(game);
     }
 
@@ -122,16 +127,35 @@ public class GameLibrary {
 
     /**
      * Laedt Spiele aus einem {@link DataStorage} und fuegt es zur vorhandenen Liste hinzu.
-     *
-     * @param storage DataStorage aus der geladen wird.
      */
-    public void loadGames(DataStorage storage) {
-        Collection<Game> loaded = storage.loadGames();
+    public void loadGames() {
+        Collection<Game> loaded = dataStorage.loadGames();
         if (loaded != null) {
             loaded.forEach(game -> {
                 if (!games.contains(game)) games.add(game);
             });
         }
-        //TODO Spiele laden
+    }
+
+    /**
+     * Speichert Spiele in einem {@link DataStorage}.
+     */
+    public void saveGames() {
+        dataStorage.saveGames(games);
+    }
+
+    public void setDataStorage(DataStorage storage) {
+        dataStorage = storage;
+    }
+
+    public DataStorage getDataStorage() {
+        return dataStorage;
+    }
+
+    public void setUnsaved(boolean b) {
+        unsaved = b;
+    }
+    public boolean isUnsaved(){
+        return unsaved;
     }
 }
