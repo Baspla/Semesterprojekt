@@ -113,10 +113,18 @@ public class Game implements Serializable {
         this.studio = studio;
     }
 
+    /**
+     *
+     * @return Genre des Spiels
+     */
     public String getGenre() {
         return genre;
     }
 
+    /**
+     *
+     * @param genre Genre des Spiels
+     */
     public void setGenre(String genre) {
         this.genre = genre;
     }
@@ -131,7 +139,7 @@ public class Game implements Serializable {
     /**
      * @return wurde das Spiel gespielt und mit besser als 5 Sterne bewertet
      */
-    public boolean isFavorite() {
+    boolean isFavorite() {
         return rating > 5;
     }
 

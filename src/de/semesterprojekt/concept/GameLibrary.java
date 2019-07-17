@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
  * Hauptklasse des Konzeptlayers
  */
 public class GameLibrary {
-    //TODO Als Einstellung?
     //Einstellungen für die Favoriten
     private static final int MIN_MATCHES = 2;
     private static final int MAX_MATCH_PER_FEATURE = 4;
@@ -138,7 +137,7 @@ public class GameLibrary {
     public void loadGames() {
         System.out.println("Loading Games...");
         Collection<Game> loaded = dataStorage.loadGames();
-        games.clear();//TODO Import oder laden?
+        games.clear();
         if (loaded != null) {
             loaded.forEach(game -> {
                 if (!games.contains(game)) games.add(game);
@@ -155,18 +154,34 @@ public class GameLibrary {
         System.out.println(!isUnsaved());
     }
 
+    /**
+     *
+     * @param storage {@link DataStorage} der benutzt werden soll
+     */
     public void setDataStorage(DataStorage storage) {
         dataStorage = storage;
     }
 
+    /**
+     *
+     * @return DataStorage, in welche benutzt wird
+     */
     public DataStorage getDataStorage() {
         return dataStorage;
     }
 
+    /**
+     *
+     * @param b Legt fest ob ungespeicherte Änderungen vorliegen
+     */
     public void setUnsaved(boolean b) {
         unsaved = b;
     }
 
+    /**
+     *
+     * @return Gibt zurück ob ungespeicherte Änderungen vorliegen
+     */
     public boolean isUnsaved() {
         return unsaved;
     }
