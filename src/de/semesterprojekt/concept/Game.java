@@ -1,3 +1,7 @@
+/*
+ * Erstellt von Tim Morgner
+ */
+
 package de.semesterprojekt.concept;
 
 import java.util.Objects;

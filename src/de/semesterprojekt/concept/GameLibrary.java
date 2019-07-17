@@ -1,3 +1,7 @@
+/*
+ * Erstellt von Tim Morgner
+ */
+
 package de.semesterprojekt.concept;
 
 import de.semesterprojekt.db.DataStorage;
@@ -157,7 +161,8 @@ public class GameLibrary {
     public void setUnsaved(boolean b) {
         unsaved = b;
     }
-    public boolean isUnsaved(){
+
+    public boolean isUnsaved() {
         return unsaved;
     }
 }

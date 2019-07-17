@@ -1,3 +1,7 @@
+/*
+ * Erstellt von Tim Morgner
+ */
+
 package de.semesterprojekt.ui.dialogs;
 
 import de.semesterprojekt.concept.GameLibrary;

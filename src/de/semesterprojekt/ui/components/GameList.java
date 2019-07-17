@@ -1,3 +1,7 @@
+/*
+ * Erstellt von Tim Morgner
+ */
+
 package de.semesterprojekt.ui.components;
 
 import de.semesterprojekt.concept.Game;

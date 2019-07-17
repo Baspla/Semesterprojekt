@@ -1,3 +1,7 @@
+/*
+ * Erstellt von Stefan Schmid
+ */
+
 package de.semesterprojekt.db;
 
 import java.io.File;

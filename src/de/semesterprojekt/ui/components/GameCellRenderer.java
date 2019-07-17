@@ -1,5 +1,9 @@
 package de.semesterprojekt.ui.components;
 
+/*
+ * Erstellt von Tim Morgner
+ */
+
 import de.semesterprojekt.concept.Game;
 import de.semesterprojekt.ui.Colors;
 
