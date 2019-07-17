@@ -16,7 +16,11 @@ public interface DataStorage {
      * @return Sammlung an geladenen Spielen
      */
     Collection<Game> loadGames();
-
+/**
+ * 
+ * @param games Liste aller Spiele
+ * @return gibt true, ob gespeichert werden konnte
+ */
     boolean saveGames(Collection<Game> games);
 
 }

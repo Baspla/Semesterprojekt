@@ -10,18 +10,15 @@ import java.io.File;
  * DataStorage, welcher die Daten in csv Dateien speichert.
  */
 public interface FileStorage extends DataStorage {
-
+/**
+ * 
+ * @param selectedFile Speicherort der Datei
+ */
     void setSaveLocation(File selectedFile);
-
+/**
+ * 
+ * 
+ * @return Speicherort der Spiele-Datei
+ */
     File getSaveLocation();
-
-    /*
-
-        Zum Speichern/Laden des Speicherorts
-
-        Preferences prefs = Preferences.userNodeForPackage(Main.class);
-        String location = prefs.get("fileSaveLocation", "C:\\Program Files\\Spielebibliothek\\save.data");
-        prefs.put("fileSaveLocation","\"C:\\\\Program Files\\\\Spielebibliothek\\\\save.data\"");
-
-     */
 }
