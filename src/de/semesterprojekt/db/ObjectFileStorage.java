@@ -11,6 +11,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 public class ObjectFileStorage implements FileStorage {
@@ -18,7 +19,7 @@ public class ObjectFileStorage implements FileStorage {
 
     public ObjectFileStorage(){
         Preferences prefs = Preferences.userNodeForPackage(ObjectFileStorage.class);
-        String location = prefs.get("fileSaveLocation", new JFileChooser().getFileSystemView().getDefaultDirectory().toString()+File.pathSeparator+"mylibrary.gamelib");
+        String location = prefs.get("fileSaveLocation", new JFileChooser().getFileSystemView().getDefaultDirectory().toString()+File.separator+"mylibrary.gamelib");
         saveLocation = new File(location);
     }
 
@@ -69,7 +70,6 @@ public class ObjectFileStorage implements FileStorage {
             System.err.println("[SAVE] Keine Save Location");
             return false;
         }
-        saveLocation.mkdirs();
         try (
                 FileOutputStream fos = new FileOutputStream(saveLocation);
                 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
