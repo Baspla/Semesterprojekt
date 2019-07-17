@@ -60,7 +60,7 @@ public class LibraryWindow extends JFrame {
     public static final String PANEL_RECCOMENDATION = "RECCOMENDATION";
     // --Commented out by Inspection (17.07.2019 08:25):private static final int BAR_WIDTH = 0;
     private static final int BAR_HEIGHT = 70;
-    public static final boolean USE_SELECTION_HALO = false;
+    public static final boolean USE_SELECTION_HALO = true;
     private static final int PREF_WIDTH = 1000;
     private static final int PREF_HEIGHT = 700;
     private final GameList favoriteList, gameList, reccomendationList;

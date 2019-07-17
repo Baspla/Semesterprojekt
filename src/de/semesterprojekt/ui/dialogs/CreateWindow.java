@@ -48,6 +48,7 @@ public class CreateWindow extends JDialog {
                 }
             }
         });
+        setTitle("Spiel hinzufügen");
         JPanel infoPanel = new JPanel(new GridLayout(3, 2));
         name = new JTextField(15);
         plattform = new JTextField(15);

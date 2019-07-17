@@ -8,6 +8,8 @@ import de.semesterprojekt.ui.Colors;
 import de.semesterprojekt.ui.HorizontalArea;
 import de.semesterprojekt.ui.LibraryWindow;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
@@ -20,6 +22,8 @@ import java.awt.Paint;
 import java.awt.RadialGradientPaint;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 /**
  * Benutzerdefiniertes Kontrollelement um zwischen Panels des CardLayouts zu wechseln
@@ -116,18 +120,27 @@ public class CustomTabSelector extends JComponent {
         triggerRight = new HorizontalArea(start + leftWidth + distance + centerWidth + (distance / 2), start + leftWidth + distance + centerWidth + distance + rightWidth + (distance / 2));
 
         Paint paint = g2d.getPaint();
-        if(LibraryWindow.USE_SELECTION_HALO)
-        switch (selected) {
-            case LEFT:
-                halo(triggerLeft, g2d, distance / 2);
-                break;
-            case CENTER:
-                halo(triggerCenter, g2d, distance / 2);
-                break;
-            case RIGHT:
-                halo(triggerRight, g2d, distance / 2);
-                break;
+        BufferedImage halo = null;
+        try {
+            halo = ImageIO.read(getClass().getResource("/halo.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        if (LibraryWindow.USE_SELECTION_HALO)
+            switch (selected) {
+                case LEFT:
+                    g2d.drawImage(halo, (int)start,0,(int)leftWidth,getHeight(),null);
+                    //halo(triggerLeft, g2d, distance / 2);
+                    break;
+                case CENTER:
+                    g2d.drawImage(halo, (int)(start+leftWidth+distance),0,(int)centerWidth,getHeight(),null);
+                    //halo(triggerCenter, g2d, distance / 2);
+                    break;
+                case RIGHT:
+                    g2d.drawImage(halo, (int)(start+leftWidth+distance+centerWidth+distance),0,(int)rightWidth,getHeight(),null);
+                    //halo(triggerRight, g2d, distance / 2);
+                    break;
+            }
         g2d.setPaint(paint);
         //Zeichnet das ausgewählte Tab größer und das gehoverte in anderer Farbe
         g2d.setFont((selected == Tab.LEFT) ? bigFont : normalFont);
@@ -146,11 +159,11 @@ public class CustomTabSelector extends JComponent {
         float[] fractions = {0, 1f};
         Color[] colors = {Colors.COLOR_HALO, Colors.COLOR_DARK};
         //LEFT
-        g2d.setPaint(new RadialGradientPaint(trigger.getStart()+r,0,10,fractions,colors));
-        g2d.fillRect((int) (trigger.getStart()), 0, (int) (trigger.getStart()+r), 1000);
+        g2d.setPaint(new RadialGradientPaint(trigger.getStart() + r, 0, 10, fractions, colors));
+        g2d.fillRect((int) (trigger.getStart()), 0, (int) (trigger.getStart() + r), 1000);
         //RIGHT
-        g2d.setPaint(new RadialGradientPaint(trigger.getEnd()-r,0,10,fractions,colors));
-        g2d.fillRect((int) (trigger.getEnd()-r), 0, (int) (trigger.getEnd() - trigger.getStart()), 1000);
+        g2d.setPaint(new RadialGradientPaint(trigger.getEnd() - r, 0, 10, fractions, colors));
+        g2d.fillRect((int) (trigger.getEnd() - r), 0, (int) (trigger.getEnd() - trigger.getStart()), 1000);
         //MIDDLE
         g2d.setPaint(new GradientPaint(0, 0, Colors.COLOR_HALO, 0, 10, Colors.COLOR_DARK));
         g2d.fillRect((int) (trigger.getStart() + r), 0, (int) (trigger.getEnd() - trigger.getStart() - r - r), 1000);
