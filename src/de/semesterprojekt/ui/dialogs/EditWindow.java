@@ -78,16 +78,16 @@ public class EditWindow extends JDialog {
             dispose();
         });
         played.addActionListener(e -> ratingBar.setEnabled(played.isSelected()));
-        name.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5), whiteTextBorder("Name")));
-        plattform.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5), whiteTextBorder("Plattform")));
-        studio.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5), whiteTextBorder("Studio")));
-        publisher.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5), whiteTextBorder("Publisher")));
-        genre.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5), whiteTextBorder("Genre")));
+        name.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5), Colors.whiteTextBorder("Name")));
+        plattform.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5), Colors.whiteTextBorder("Plattform")));
+        studio.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5), Colors.whiteTextBorder("Studio")));
+        publisher.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5), Colors.whiteTextBorder("Publisher")));
+        genre.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5), Colors.whiteTextBorder("Genre")));
         ratingBar.setMajorTickSpacing(5);
         ratingBar.setMinorTickSpacing(1);
         ratingBar.setPaintTicks(true);
         ratingBar.setPaintLabels(true);
-        ratingBar.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5), whiteTextBorder("Bewertung")));
+        ratingBar.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5), Colors.whiteTextBorder("Bewertung")));
         JPanel bottomRight = new JPanel(new FlowLayout());
         bottomRight.setBackground(Colors.COLOR_NORMAL);
         played.setBackground(Colors.COLOR_NORMAL);
@@ -113,9 +113,9 @@ public class EditWindow extends JDialog {
         btnExit.setBackground(Colors.COLOR_DARK);
         btnSave.setBackground(Colors.COLOR_DARK);
         btnRemove.setBackground(Colors.COLOR_DARK);
-        btnExit.setForeground(Colors.COLOR_TEXT);
-        btnSave.setForeground(Colors.COLOR_TEXT);
-        btnRemove.setForeground(Colors.COLOR_TEXT);
+        btnExit.setForeground(Colors.COLOR_TEXT_BUTTON);
+        btnSave.setForeground(Colors.COLOR_TEXT_BUTTON);
+        btnRemove.setForeground(Colors.COLOR_TEXT_BUTTON);
         btnExit.setToolTipText("Verlassen ohne zu Speichern");
         btnSave.setToolTipText("Speichern und Verlassen");
         btnRemove.setToolTipText("Entfernt das Spiel");
@@ -147,12 +147,6 @@ public class EditWindow extends JDialog {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private Border whiteTextBorder(String string) {
-        TitledBorder border = BorderFactory.createTitledBorder(string);
-        border.setTitleColor(Colors.COLOR_TEXT);
-        return border;
     }
 
     /**

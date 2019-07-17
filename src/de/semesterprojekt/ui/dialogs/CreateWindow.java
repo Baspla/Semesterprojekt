@@ -103,8 +103,8 @@ public class CreateWindow extends JDialog {
         buttonPanel.setBackground(Colors.COLOR_NORMAL);
         btnExit.setBackground(Colors.COLOR_DARK);
         btnSave.setBackground(Colors.COLOR_DARK);
-        btnExit.setForeground(Colors.COLOR_TEXT);
-        btnSave.setForeground(Colors.COLOR_TEXT);
+        btnExit.setForeground(Colors.COLOR_TEXT_BUTTON);
+        btnSave.setForeground(Colors.COLOR_TEXT_BUTTON);
         //Tooltips
         btnExit.setToolTipText("Verlassen ohne zu Speichern");
         btnSave.setToolTipText("Speichern und Verlassen");

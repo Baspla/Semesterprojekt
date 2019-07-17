@@ -4,6 +4,11 @@
 
 package de.semesterprojekt.ui;
 
+import javax.swing.BorderFactory;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 import java.awt.Color;
 
 /**
@@ -18,4 +23,11 @@ public abstract class Colors {
     public static final Color COLOR_LIGHT = new Color(129, 156, 169);
     public static final Color COLOR_HOVER = new Color(176, 190, 197);
     public static final Color COLOR_TEXT = Color.WHITE;
+    public static Color COLOR_TEXT_BUTTON = Color.WHITE;
+
+    public static Border whiteTextBorder(String string) {
+        TitledBorder border = BorderFactory.createTitledBorder(string);
+        border.setTitleColor(Colors.COLOR_TEXT);
+        return border;
+    }
 }
