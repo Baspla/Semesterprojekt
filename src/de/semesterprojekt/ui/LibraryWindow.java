@@ -31,6 +31,7 @@ import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * Tiefstes UI-Fenster zur Darstellung einer {@link GameLibrary}
@@ -179,7 +180,9 @@ public class LibraryWindow extends JFrame {
             ((DefaultListModel<Game>) reccomendationList.getModel()).addAll(library.getReccomendedGames());
         }
         try {
-            setIconImage(ImageIO.read(getClass().getResource("/icon.png")));
+            URL bild = getClass().getResource("/icon.png");
+            if (bild != null)
+                setIconImage(ImageIO.read(bild));
         } catch (IOException e) {
             e.printStackTrace();
         }
