@@ -2,8 +2,10 @@ package de.semesterprojekt.ui.components;
 
 import de.semesterprojekt.concept.Game;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.FlowLayout;
 
 /**
  * Leiste mit bis zu 10 Sternen, je nach Bewertung. Bei 0 ist die Leiste unsichtbar.

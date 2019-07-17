@@ -4,8 +4,16 @@ import de.semesterprojekt.ui.Colors;
 import de.semesterprojekt.ui.HorizontalArea;
 import de.semesterprojekt.ui.LibraryWindow;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Paint;
+import java.awt.RadialGradientPaint;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -144,17 +152,19 @@ public class CustomTabSelector extends JComponent {
         g2d.fillRect((int) (trigger.getStart() + r), 0, (int) (trigger.getEnd() - trigger.getStart() - r - r), 1000);
     }
 
-    /**
-     * Debugfunktion um anzuzeigen wo clicks registriert werden
-     */
-    private void debugDrawTrigger(Graphics g) {
-        line(g, triggerLeft.getStart());
-        line(g, triggerLeft.getEnd());
-        line(g, triggerCenter.getStart());
-        line(g, triggerCenter.getEnd());
-        line(g, triggerRight.getStart());
-        line(g, triggerRight.getEnd());
-    }
+// --Commented out by Inspection START (17.07.2019 08:24):
+//    /**
+//     * Debugfunktion um anzuzeigen wo clicks registriert werden
+//     */
+//    private void debugDrawTrigger(Graphics g) {
+//        line(g, triggerLeft.getStart());
+//        line(g, triggerLeft.getEnd());
+//        line(g, triggerCenter.getStart());
+//        line(g, triggerCenter.getEnd());
+//        line(g, triggerRight.getStart());
+//        line(g, triggerRight.getEnd());
+//    }
+// --Commented out by Inspection STOP (17.07.2019 08:24)
 
     private void line(Graphics g, float x) {
         g.drawLine((int) x, 0, (int) x, 1000);

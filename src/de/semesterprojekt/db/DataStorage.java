@@ -2,7 +2,6 @@ package de.semesterprojekt.db;
 
 import de.semesterprojekt.concept.Game;
 
-import java.io.File;
 import java.util.Collection;
 
 /**

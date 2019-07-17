@@ -1,6 +1,6 @@
 package de.semesterprojekt.ui;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * Farbschema der Oberfläche

@@ -2,8 +2,10 @@ package de.semesterprojekt.concept;
 
 import de.semesterprojekt.db.DataStorage;
 
-import javax.xml.crypto.Data;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -12,8 +14,8 @@ import java.util.stream.Collectors;
  */
 public class GameLibrary {
     //TODO Als Einstellung?
-    private static int MIN_MATCHES = 2;
-    private static int MAX_MATCH_PER_FEATURE = 4;
+    private static final int MIN_MATCHES = 2;
+    private static final int MAX_MATCH_PER_FEATURE = 4;
     private final ArrayList<Game> games;
     private ArrayList<Game> reccomendedGames;
     private DataStorage dataStorage;
@@ -85,7 +87,7 @@ public class GameLibrary {
         HashMap<String, Long> plattformCounts = count(preferences[2]);
         HashMap<String, Long> genreCounts = count(preferences[3]);
         //noinspection unchecked
-        reccomendedGames = (ArrayList<Game>) new ArrayList(getGames().stream()
+        reccomendedGames = (java.util.ArrayList<Game>) new ArrayList(getGames().stream()
                 .filter(game -> (studioCounts.containsKey(game.getStudio()) ||
                         publisherCounts.containsKey(game.getPublisher()) ||
                         plattformCounts.containsKey(game.getPlattform()) ||
@@ -93,11 +95,11 @@ public class GameLibrary {
                 ).collect(Collectors.toList()));
     }
 
-    private HashMap<String, Long> count(ArrayList<String> list) {
+    private HashMap<String, Long> count(java.util.ArrayList<String> list) {
         HashMap<String, Long> map = new HashMap<>();
         list.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))    //Zählt die Vorkommen der Features
                 .entrySet().stream().filter(stringLongEntry -> stringLongEntry.getValue() >= MIN_MATCHES) //Filtert Ergebnisse, die zu selten vorkommen
-                .sorted(Comparator.comparing(Map.Entry::getValue, Comparator.reverseOrder())) //Sortiert die Ergebnisse
+                .sorted(java.util.Comparator.comparing(java.util.Map.Entry::getValue, Comparator.reverseOrder())) //Sortiert die Ergebnisse
                 .limit(MAX_MATCH_PER_FEATURE) //Limitiert es auf die Top n Ergebnisse
                 .forEach(o -> map.put(o.getKey(), o.getValue())); //Fuegt die Ergebnisse zu einer neuen Map hinzu
         return map;

@@ -3,8 +3,16 @@ package de.semesterprojekt.ui.components;
 import de.semesterprojekt.concept.Game;
 import de.semesterprojekt.ui.Colors;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.ListCellRenderer;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Font;
+import java.awt.GridLayout;
 
 /**
  * Stellt das {@link Game} Objekt in der Liste graphisch dar
