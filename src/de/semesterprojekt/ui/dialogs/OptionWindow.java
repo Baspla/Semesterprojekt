@@ -114,6 +114,7 @@ public class OptionWindow extends JDialog {
 
     /**
      * Zeigt das Fenster mit den Einstellungen
+     * @param library Eltern-Fenster
      */
     public static void showWindow(LibraryWindow library) {
         if (window == null) window = new OptionWindow(library);

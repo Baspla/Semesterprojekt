@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.prefs.Preferences;
 
+/**
+ * Speichert Spiele als Java Objekte
+ */
 public class ObjectFileStorage implements FileStorage {
     private File saveLocation;
 

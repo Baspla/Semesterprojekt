@@ -163,16 +163,16 @@ public class GameLibrary {
     }
 
     /**
-     *
-     * @return DataStorage, in welche benutzt wird
+     * Wählt DataStorage, welche benutzt wird
+     * @return DataStorage, welche benutzt wird
      */
     public DataStorage getDataStorage() {
         return dataStorage;
     }
 
     /**
-     *
-     * @param b Legt fest ob ungespeicherte Änderungen vorliegen
+     * Legt fest ob ungespeicherte Änderungen vorliegen
+     * @param b
      */
     public void setUnsaved(boolean b) {
         unsaved = b;
